@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT-Style Q&A</title>
+</head>
+<body>
+    <h1>Ask a Question</h1>
+    <p><strong>Passage:</strong> {{ passage }}</p>
+
+    <form method="POST">
+        <input type="text" name="question" placeholder="Ask a question...">
+        <input type="submit" value="Get Answer">
+    </form>
+
+    <h2>Conversation History</h2>
+    {% for item in conversation %}
+        <p><strong>You:</strong> {{ item.question }}</p>
+        <p><strong>Bot:</strong> {{ item.answer }}</p>
+        <hr>
+    {% endfor %}
+
+    <form method="POST" action="/reset">
+        <input type="submit" value="Reset">
+    </form>
+</body>
+</html>
